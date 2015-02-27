@@ -9,7 +9,7 @@
     tools:context=".TodoActivity">
 
     <TextView
-        android:text="@string/hello_world"
+        android:background="@drawable/Cork_board"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
