@@ -45,7 +45,15 @@ public class TodoActivity extends Activity {
 
 
         }
-        });
+        }
+        button = (Button)findViewById(R.id.activity_todo.xml);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(actvity_todo.this, add_new.class));
+            }
+        }););
         /** Called when the user clicks the Send button */
 
 

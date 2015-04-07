@@ -1,54 +1,49 @@
+package android.dreamsincorporated.java;
+
 import android.app.Activity;
-import android.app.Fragment;
-import android.dreamsincorporated.todo.R;
-import android.dreamsincorporated.todo.TodoActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
+import android.widget.TextView;
 
-/**
- * Created by Student on 3/13/2015.
- */
-public class add_new extends TodoActivity {@Override
-                                           protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_display_message);
+public class add_new extends Activity {
+    /** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-    if (savedInstanceState == null) {
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.container, new PlaceholderFragment()).commit();
+        mTextView = new TextView(this);
+
+        if (savedInstanceState == null) {
+            mTextView.setText("Welcome to HelloAndroid!");
+        } else {
+            mTextView.setText("Welcome back.");
+        }
+
+        setContentView(mTextView);
     }
-}
+
+    private TextView mTextView = null;
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        // Save UI state changes to the savedInstanceState.
+        // This bundle will be passed to onCreate if the process is
+        // killed and restarted.
+        savedInstanceState.putBoolean("MyBoolean", true);
+        savedInstanceState.putDouble("myDouble", 1.9);
+        savedInstanceState.putInt("MyInt", 1);
+        savedInstanceState.putString("MyString", "Welcome back to Android");
+        // etc.
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-
-        public PlaceholderFragment() { }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_display_message,
-                    container, false);
-            return rootView;
-        }
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        // Restore UI state from the savedInstanceState.
+        // This bundle has also been passed to onCreate.
+        boolean myBoolean = savedInstanceState.getBoolean("MyBoolean");
+        double myDouble = savedInstanceState.getDouble("myDouble");
+        int myInt = savedInstanceState.getInt("MyInt");
+        String myString = savedInstanceState.getString("MyString");
     }
-}
-
 }
