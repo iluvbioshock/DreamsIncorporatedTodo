@@ -2,21 +2,15 @@ package android.dreamsincorporated.todo;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.util.Calendar;
-import java.util.Date;
 
 
 public class TodoActivity extends Activity {
@@ -51,7 +45,7 @@ public class TodoActivity extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(actvity_todo.this, add_new.class));
+                startActivity(new Intent(actvity_todo.this, android.dreamsincorporated.java.add_new.class));
             }
         }););
         /** Called when the user clicks the Send button */
@@ -59,7 +53,7 @@ public class TodoActivity extends Activity {
 
         button.setEmptyView(Button);
 
-        new add_new().execute(this);
+        new android.dreamsincorporated.java.add_new().execute(this);
 
         // Get the message from the intent
         Intent intent = getIntent();
